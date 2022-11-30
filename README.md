@@ -18,21 +18,22 @@ This is an easy and fast way to create _APIs_ for Authentication (Signup, Signin
 
 #### Endpoint: /api/v1/usermng/signup
 
-![image](<./Screenshot%20(1).png>)
+![image](<./readme-assets/Screenshot%20(1).png>)
 
 ###### Storing the `username`, `email`, `password`. Password is stored using encryption including `salts` and `hashing` technique. Hashing is irreversible therefore, the password once stored cannot be decrypted again.
 
 #### Endpoint: /api/v1/usermng/signin
 
-![image](<./Screenshot%20(2).png>)
+![image](<./readme-assets/Screenshot%20(2).png>)
 
 ###### Checking the `email` and `password` from the database. If the `email` and `password` matches, then the user is logged in. Else the `error message` is returned.
 
 #### Endpoint: /api/v1/usermng/forgetPassword
 
-![image](<./Screenshot%20(3).png>)
+![image](<./readme-assets/Screenshot%20(3).png>)
 
 ###### There are different techniques for forget password or reset password like token using `JWT`(JSON Web Token) or `OTP`(One Time Password). I used a simple way to identify the user, by asking the user about the data we have like its username or DoB for authorization, then email user the new password.
 
 ## LICENSE
+
 <a href="LICENSE">MIT</a>© <a href="https://www.github.com/FrozenSamurai">Author: Raj Vijay Jadhav</a>
