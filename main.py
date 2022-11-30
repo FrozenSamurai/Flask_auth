@@ -2,12 +2,25 @@ from datetime import datetime
 import models
 from flask_cors import CORS
 from flask import Flask, request, jsonify
+from flask_mail import Mail
+
 
 app = Flask(__name__)
-CORS(app, resources={r"*": {"origins": "*"}})
+CORS(app, resources={r"*": {"origins": "*"}}, supports_credentials=True)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 url_prefix = "/api/v1/usermng/"
+
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USERNAME'] = 'raj.imdeveloper@gmail.com'
+app.config['MAIL_PASSWORD'] = 'cybevhpgqmxozhpx'
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_DEBUG'] = True
+app.config['MAIL_DEFAULT_SENDER'] = 'raj.imdeveloper@gmail.com'
+
+mail = Mail(app)
 
 
 def _corsify_actual_response(response):
@@ -57,18 +70,18 @@ def login():
 
 @app.route(f'{url_prefix}/forgetPassword', methods=["OPTIONS", "POST"])
 def forgetPassword():
-    try:
-        data = request.json
-        if request.method == "OPTIONS":
-            return _corsify_actual_response(jsonify({"status": "ok"}))
-        elif data == None:
-            return _corsify_actual_response(jsonify({"status": "error", "message": "No data provided"}))
-        email = data['email']
-        username = data['username']
-        status, message = models.forget_password(email, username)
-        return jsonify({"Status": status, "Message": message})
-    except Exception as e:
-        return jsonify({"Status": False, "Message": str(e)})
+    # try:
+    data = request.json
+    if request.method == "OPTIONS":
+        return _corsify_actual_response(jsonify({"status": "ok"}))
+    elif data == None:
+        return _corsify_actual_response(jsonify({"status": "error", "message": "No data provided"}))
+    email = data['email']
+    username = data['username']
+    status, message = models.forget_password(email, username)
+    return jsonify({"Status": status, "Message": message})
+    # except Exception as e:
+    #     return jsonify({"Status": False, "Message": str(e)})
 
 
 if __name__ == '__main__':

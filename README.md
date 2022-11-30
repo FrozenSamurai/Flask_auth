@@ -32,6 +32,6 @@ This is an easy and fast way to create _APIs_ for Authentication (Signup, Signin
 
 ![image](<./Screenshot%20(3).png>)
 
-###### There are different techniques for forget password or reset password like token using `JWT`(JSON Web Token) or `OTP`(One Time Password). I used a simple way to identify the user, by asking the user about the data we have like its username or DoB for authorization.
+###### There are different techniques for forget password or reset password like token using `JWT`(JSON Web Token) or `OTP`(One Time Password). I used a simple way to identify the user, by asking the user about the data we have like its username or DoB for authorization, then email user the new password.
 
 <a href="https://www.github.com/FrozenSamurai">Author: Raj Vijay Jadhav</a>
