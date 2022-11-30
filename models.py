@@ -121,6 +121,10 @@ def reset_password(email, password, new_password):
                     f"""UPDATE users SET password=? WHERE email=?""", (bcrypt.hashpw(new_password, bcrypt.gensalt()), email))
                 con.commit()
                 con.close()
+                body = f'Your password has been changed successfully\n Time Stamp: {str(datetime.now())}.'
+                x = threading.Thread(target=mailing, args=(
+                    email, body,), daemon=True)
+                x.start()
                 return True, f"Password reset successfully"
             else:
                 return False, "Incorrect password"
