@@ -34,6 +34,12 @@ This is an easy and fast way to create _APIs_ for Authentication (Signup, Signin
 
 ###### There are different techniques for forget password or reset password like token using `JWT`(JSON Web Token) or `OTP`(One Time Password). I used a simple way to identify the user, by asking the user about the data we have like its username or DoB for authorization, then email user the new password.
 
+#### Endpoint: /api/v1/usermng/resetPassword
+
+![image](<./readme-assets/Screenshot%20(4).png>)
+
+###### Checking the `email` and `password` from the database. If the `email` and `password` matches, then setting the `new_password`. Else the `error message` is returned.
+
 ## LICENSE
 
 <a href="LICENSE">MIT</a>© <a href="https://www.github.com/FrozenSamurai">Author: Raj Vijay Jadhav</a>
